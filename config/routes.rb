@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :ideas
 
-  get 'about', to: 'static_pages#about', as: 'static_page'
-  get 'random', to: 'static_pages#random', as: 'static_page1' #why as: static_page is optional what is its work ?
+  get 'about' => 'static_pages#about', as: 'static_page'
+  get 'random' => 'static_pages#random', as: 'static_page1' #why as: static_page is optional what is its work ?
 
 end
