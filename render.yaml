@@ -3,13 +3,10 @@
 databases:
   - name: mysql2
     plan: starter
-    envVars:
-      - key: MYSQL_DATABASE
-        value: ideator_production
-      - key: MYSQL_USER
-        value: root
-      - key: MYSQL_PASSWORD
-        value: Pankaj@123
+    env:
+      MYSQL_DATABASE: ideator_production
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Pankaj@123
 
 services:
   - type: web
@@ -17,8 +14,6 @@ services:
     env: ruby
     buildCommand: "./render-build.sh"
     startCommand: "bundle exec rails s -p $PORT -e $RAILS_ENV"
-    envVars:
-      - key: RAILS_MASTER_KEY
-        fromFile: config/master.key
-      - key: DATABASE_URL
-        value: mysql2://root:Pankaj@123@localhost/ideator_production?reconnect=true&encoding=utf8mb4&pool=5
+    env:
+      RAILS_MASTER_KEY: fromFile:config/master.key
+      DATABASE_URL: mysql2://root:Pankaj@123@localhost/ideator_production?reconnect=true&encoding=utf8mb4&pool=5
