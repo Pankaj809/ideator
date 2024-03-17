@@ -3,7 +3,6 @@ databases:
     ipAllowList: []
     databaseName: ideator
     user: ideator
-    password: <%= ENV["Pankaj@123"] %>
     connectionLimit: 20
 
 services:
