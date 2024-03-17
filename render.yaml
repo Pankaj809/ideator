@@ -1,8 +1,15 @@
+# render.yaml
+
 databases:
   - name: mysql2
-    ipAllowList: []
-    databaseName: ideator
-    user: ideator
+    plan: starter
+    envVars:
+      - key: MYSQL_DATABASE
+        value: ideator_production
+      - key: MYSQL_USER
+        value: root
+      - key: MYSQL_PASSWORD
+        value: Pankaj@123
 
 services:
   - type: web
@@ -11,9 +18,7 @@ services:
     buildCommand: "./render-build.sh"
     startCommand: "bundle exec rails s -p $PORT -e $RAILS_ENV"
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: mysql2
-          property: connectionString
       - key: RAILS_MASTER_KEY
-        sync: false
+        fromFile: config/master.key
+      - key: DATABASE_URL
+        value: mysql2://root:Pankaj@123@localhost/ideator_production?reconnect=true&encoding=utf8mb4&pool=5
