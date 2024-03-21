@@ -1,5 +1,5 @@
 # README
-
+link to the site hosted in render https://ideator-v1go.onrender.com/
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
